@@ -38,7 +38,8 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/projects');
+        const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const res = await fetch(`${apiBase}/api/projects`);
         const data = await res.json();
         if (data.length > 0) {
           setProjects(data);
